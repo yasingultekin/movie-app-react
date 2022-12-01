@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../auth/firebase";
 
 const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(firstName, lastName);
+    signIn(email, password, navigate);
   };
 
   return (
@@ -48,7 +53,7 @@ const Register = () => {
             <input
               type="submit"
               className="btn btn-primary form-control"
-              value="Register"
+              value="Login"
             />
           </div>
         </form>
