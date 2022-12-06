@@ -1,15 +1,14 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
 import { AuthContext } from "../context/AuthContext";
-import MovieCard from "./MovieDetail";
 
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
-const SEARCH_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&query=`;
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
 
 const Main = () => {
   // console.log(API_KEY);
-
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,6 +38,7 @@ const Main = () => {
       alert("Please enter a text!");
     }
   };
+
   return (
     <>
       <form className="search" onSubmit={handleSubmit}>
@@ -52,7 +52,6 @@ const Main = () => {
           Search
         </button>
       </form>
-
       <div className="d-flex justify-content-center flex-wrap">
         {loading ? (
           <div className="spinner-border text-primary m-5" role="status">
