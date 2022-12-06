@@ -34,9 +34,9 @@ const Main = () => {
     if (searchTerm && currentUser) {
       getMovies(SEARCH_API + searchTerm);
     } else if (!currentUser) {
-      alert("Please login to search a movie");
+      alert("Please login to search a movie!");
     } else {
-      alert("Please enter a text");
+      alert("Please enter a text!");
     }
   };
   return (
@@ -48,7 +48,9 @@ const Main = () => {
           placeholder="Search a movie..."
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="button-search" type="submit">
+          Search
+        </button>
       </form>
 
       <div className="d-flex justify-content-center flex-wrap">
